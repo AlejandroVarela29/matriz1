@@ -7,17 +7,14 @@ public class App {
          String respuesta;
         while (reiniciar) {
         System.out.println("Se le presentara un menu con las siguientes opciones");
-
         System.out.println("1)Verificar si dos matrices son iguales \n 2)Sumar 2 matrices\n 3)generar una matriz de 0 n x m\n 4)Obtener el inverso aditivo de una matriz n x m ");
         System.out.println("5)Restar 2 matrices\n 6)Multiplicar un escalar por una matriz n x m \n 7)Multiplicdar 2 matrices compatibles");
+        System.out.println("8)Generar una matriz identidad de n x m");
 
         int elegir = leer.nextInt();
 
          int numFilasA, numColumnaA, numFilasB, numColumnaB;
 
-        
-            
-        
         switch (elegir) {
             case 1:
 
@@ -35,9 +32,6 @@ public class App {
               System.out.println("Cual es el numero de columnas para la matriz b");
               numColumnaB=leer.nextInt();
 
-              int matrizA[][] = new int [numFilasA][numColumnaA];
-              int matrizB[][] = new int [numFilasB][numColumnaB];
-
               if(numFilasA != numFilasB && numColumnaA !=  numColumnaB){
                 System.out.println("Las matrices a y b son diferentes ");
                 break;
@@ -45,43 +39,6 @@ public class App {
               }else{
                 System.out.println("Las matrices a y b son iguales ");
               }
-
-                for(int i = 0 ; i <numFilasA ; i ++){
-                    for(int j =  0 ;j<numColumnaA ; j++){
-
-                    System.out.println("Cual es el valor de la matriz a  : " + "[" + (i + 1) + "][" + (j + 1) +"]");
-                    matrizA[i][j] = leer.nextInt(); 
-                    }
-                }
-
-                for(int x = 0 ; x <numFilasA ; x ++){
-                    for(int y =  0 ;y<numColumnaA ; y++){
-
-                    System.out.println("Cual es el valor de la matriz b : " + "[" +(x + 1) + "][" + (y + 1) +"]");
-                    matrizB[x][y] = leer.nextInt(); 
-                        }
-                    }
-
-                 System.out.println("La matriz a es");
-
-                for(int i = 0 ; i <numFilasA ; i ++){
-                    for(int j =  0 ;j<numColumnaA ; j++){
-                          
-                            System.out.print(matrizA[i][j] + " ");
-
-                          }
-                        System.out.println(" ");
-                        }
-
-                        System.out.println("La matriz b es ");
-
-                        for(int x = 0 ; x <numFilasA ; x ++){
-                          for(int y =  0 ;y<numColumnaA ; y++){
-                         
-                            System.out.print(matrizB[x][y] + " ");
-                            }
-                        System.out.println(" ");
-                        }
 
                         System.out.println("Desea reiniciar el programa?(Si o No)");
                         respuesta = leer.next();
@@ -141,7 +98,7 @@ public class App {
                     for(int i = 0 ; i <matrizA1.length ; i ++){
                         for(int j =  0 ;j<matrizB1.length; j++){
 
-                            resultado[i][j] = matrizA1[i][j] + matrizB1[i][j];
+                            resultado[i][ j] = matrizA1[i][j] + matrizB1[i][j];
 
                         }
                     }
@@ -530,14 +487,46 @@ public class App {
                 break;
 
             case 8:
-                
-                break;
 
-            case 9:
-                
-                break;
+                System.out.println("Para crear una matriz identidad de n solo se necesita el valor de las filas");
 
-                 case 10:
+                System.out.println("Cual es el valor para crear una matriz identidad n ");
+                int valorMatrizI = leer.nextInt();
+    
+                System.out.println("Cual es el valor para crear una matriz identidad n ");
+                int valorMatrizI1 = leer.nextInt();
+    
+    
+                int matrizA8 [][] = new int[valorMatrizI][valorMatrizI1];
+    
+            for(int i = 0; i<valorMatrizI ; i++){
+                 for(int j = 0; j<valorMatrizI ; j++){
+    
+                    if( i == j){
+    
+                matrizA8[i][j] = 1;
+                    }else{
+                        matrizA8[i][j] = 0;
+                    }
+            }
+        }
+    
+             for(int i = 0; i<valorMatrizI ; i++){
+                for(int j = 0; j<valorMatrizI ; j++){
+    
+    
+               System.out.print( matrizA8 [i][j] + " ");
+            }
+            System.out.println();
+        }
+
+             System.out.println("Desea reiniciar el programa?(Si o No)");
+                        respuesta = leer.next();
+                        if(respuesta.equalsIgnoreCase("No")){
+                            reiniciar = false;
+                        }
+            
+            
                 
                 break;
         
@@ -548,6 +537,8 @@ public class App {
                 break;
         }
     }
+
+    leer.close();
 
     }
 }
